@@ -14,27 +14,27 @@ private:
     Compléter le code à partir d'ici
   *******************************************************/
 public:
-    Flacon (string n; double p, double v):nom(n), pH(p), volume(v){}
+    Flacon(string n, double p, double v): nom(n), pH(p), volume(v){}
     ostream& etiquette(ostream&sortie)const
     {
         sortie<<nom<<":"<<volume<<"ml, pH:"<<pH;
-        return sortie
-    }
-    friend ostream& operator<<(ostream& os, const flacon&f)
+        return sortie;
+    };
+    friend ostream& operator<<(ostream& os, const Flacon&f)
     {
-        return f.etiquette(s);
-    }
-    friend Flacon operator+(flacon f;const flacon& p)
+        return f.etiquette(os);
+    };
+    friend Flacon operator+(Flacon f,const Flacon& p)
     {
         f.nom=f.nom+"+"=p.nom;
         f.volume+=p.volume;
         double n,d;
         n=(f.volume-p.volume)*pow(10.0,-f.pH)+p.volume*pow(10.0,-p.pH);
         d=f.volume;
-        f.pH=-log10(n/d)
+        f.pH=-log10(n/d);
         return f;
-    }
-    flacon& operator=(const flacon& f)
+    };
+    Flacon& operator=(const Flacon& f)
     {
         nom+=f.nom;
         volume+=f.volume;
@@ -42,7 +42,7 @@ public:
         n=(volume-f.volume)*pow(10.0-pH)+f.volume*pow(10.0-f.pH);
         d=volume;
         return *this;
-    }
+    };
 
 
 
